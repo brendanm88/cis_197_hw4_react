@@ -1,5 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import App from './src/components/App'
- 
-ReactDOM.render(<App/>, document.getElementById('react-root'))
+
+render(
+  // eslint-disable-next-line react/jsx-filename-extension
+  <App />,
+  document.getElementById('react-root'),
+)

@@ -1,50 +1,39 @@
-import React from 'react'
- 
-// const App = () => (
-//   <h1>Your react app!</h1>
-// )
-// export default App
+import React, { Component } from 'react'
+import NewPost from './NewPost'
 
-import Comment from '/Comment.js';
+const App = () => (
+  // eslint-disable-next-line react/jsx-filename-extension
+  <div>
+    <h1>
+      Comment App!
+    </h1>
+    <NewPost d={0} />
+  </div>
+)
+export default App
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+//   addComment = e => {
+//     e.preventDefault();
+//     let name = this.state.inName;
+//     let body = this.state.inBody;
+//     this.state.comments.push(<Comment name={this.state.inName} body={this.state.inBody}/>)
+//     console.log(this.state.comments[0].name)
 
-  componentDidMount() {
-    this.props.store.subscribe(function () {
-      this.setState(this.props.store.getState());
-    }.bind(this));
-  }
+//     // comments list
+//   }
 
-  // old  approach
-  //deleteParent(id) {
-    //let newTweets = this.state.tweets.filter((x) => { return x.id !== id });
-    //this.setState({
-      //tweets: newTweets
-    //})
-  //}
+//   render()  {
+//     const { inName, inBody, count } = this.state
 
-  render()  {
-    let commentlist = this.props.store.getState().comments.map( (c, pos) => {
-        return (
-          <Comment store={this.props.store} 
-                 key={pos} 
-                 id={c.id} 
-                 content={c.content} 
-                 author={c.author}/>
-        );
-      }
-    )
+//     // make new post container, using commentList, commentContainer, state has commentList
+//     // handle adding new comments in new post, submit updates commentList state and re-render 
+// using useEffect, isLoading is state that when updated causes new render
 
-    return (
-      <div>
-        <h1>Total Comments = { this.props.store.getState().comments.length }</h1>
-        {commentlist}
-      </div>
-    )
-  }
-}
+//     // replut button in Comment
+//     return (
+//       // create commentcontainer tag here and pass inputs
+//       // reference comment as a tag like <Comment depth=1 comment={name: "", body: ""}/>
+//     )}
+//   }
 
-export default App;
+// export default App;
