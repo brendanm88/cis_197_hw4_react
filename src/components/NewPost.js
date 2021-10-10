@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import CommentContainer from './CommentContainer'
 
-const NewPost = ({ d /* , comment */ }) => {
+const NewPost = ({ d, msg }) => {
   const [inputName, setName] = useState('')
   const [inputBody, setBody] = useState('')
   const [depth, setDepth] = useState(d)
