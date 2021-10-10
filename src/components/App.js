@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import NewPost from './NewPost'
 
 const App = () => (
-  // eslint-disable-next-line react/jsx-filename-extension
   <div>
     <h1>
       Comment App!

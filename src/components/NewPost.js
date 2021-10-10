@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import CommentContainer from './CommentContainer'
-import Comment from './Comment'
 
 const NewPost = ({ d /* , comment */ }) => {
   const [inputName, setName] = useState('')
@@ -13,7 +12,6 @@ const NewPost = ({ d /* , comment */ }) => {
   const canSubmit = inputName.length > 0 && inputBody.length > 0
   if (!final) {
     return (
-      // eslint-disable-next-line react/jsx-filename-extension
       <div>
         <h2>New Comment:</h2>
         <form>
@@ -40,9 +38,8 @@ const NewPost = ({ d /* , comment */ }) => {
             type="submit"
             disabled={!canSubmit}
             onClick={() => {
-              setComList([ // comList.push(
-                <Comment d={depth} comment={{ name: inputName, body: inputBody }} />,
-              ])
+              const comment = { name: inputName, body: inputBody }
+              comList.push(comment)
               setFinal(true)
             }}
           >
