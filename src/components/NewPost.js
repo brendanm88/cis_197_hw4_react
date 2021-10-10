@@ -9,7 +9,7 @@ const NewPost = ({ d, msg }) => {
   const [depth, setDepth] = useState(d)
   const [comList, setComList] = useState([])
   const [final, setFinal] = useState(false)
-  const canSubmit = inputName.length > 0 && inputBody.length > 0
+  const canSubmit = inputName.length > 0 && inputBody.length > 0 && depth < 4
   if (!final) {
     return (
       <div>
