@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import PropTypes from 'prop-types'
 import NewPost from './NewPost'
+import { ButtonWrapper } from './StyleComps'
 
 const Comment = ({ d, comment }) => {
   const { name, body } = comment
@@ -83,7 +84,11 @@ const Comment = ({ d, comment }) => {
           Replies:
           {replies}
         </p>
-        <button
+        <ButtonWrapper
+          style={{
+            background: 'white',
+            color: 'steelblue',
+          }}
           type="button"
           onClick={() => {
             setReplies(replies + 1)
@@ -91,15 +96,28 @@ const Comment = ({ d, comment }) => {
           }}
         >
           Reply
-        </button>
+        </ButtonWrapper>
 
-        <button type="button" onClick={() => setVotes(votes + 1)}>UpVote</button>
-        <button
+        <ButtonWrapper
+          style={{
+            background: 'white',
+            color: 'steelblue',
+          }}
+          type="button"
+          onClick={() => setVotes(votes + 1)}
+        >
+          UpVote
+        </ButtonWrapper>
+        <ButtonWrapper
+          style={{
+            background: 'white',
+            color: 'steelblue',
+          }}
           type="button"
           onClick={() => setVotes(votes - 1)}
         >
           DownVote
-        </button>
+        </ButtonWrapper>
         <NewPost d={depth + 1} />
       </div>
     )
@@ -172,7 +190,11 @@ const Comment = ({ d, comment }) => {
         Replies:
         {replies}
       </p>
-      <button
+      <ButtonWrapper
+        style={{
+          background: 'white',
+          color: 'steelblue',
+        }}
         type="button"
         onClick={() => {
           setReplies(replies + 1)
@@ -180,15 +202,28 @@ const Comment = ({ d, comment }) => {
         }}
       >
         Reply
-      </button>
+      </ButtonWrapper>
 
-      <button type="button" onClick={() => setVotes(votes + 1)}>UpVote</button>
-      <button
+      <ButtonWrapper
+        style={{
+          background: 'white',
+          color: 'steelblue',
+        }}
+        type="button"
+        onClick={() => setVotes(votes + 1)}
+      >
+        UpVote
+      </ButtonWrapper>
+      <ButtonWrapper
+        style={{
+          background: 'white',
+          color: 'steelblue',
+        }}
         type="button"
         onClick={() => setVotes(votes - 1)}
       >
         DownVote
-      </button>
+      </ButtonWrapper>
     </div>
   )
 }
