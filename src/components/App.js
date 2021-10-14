@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import CommentContainer from './CommentContainer'
 import NewPost from './NewPost'
 import { GlobalStyle, Title } from './StyleComps'
@@ -9,18 +9,16 @@ const App = () => {
   return (
     <div>
       <GlobalStyle>
-        <div style={{
-          backgroundColor: 'steelblue',
-          height: '700px',
-        }}
-        >
+        <div>
           <Title>
             Comment App!
+            FIX ORDERING OF REPLIES!!!
           </Title>
-          <NewPost d={0} list={comList} update={updateComList} />
+          <NewPost d={0} list={comList} update={updateComList} first />
           <CommentContainer
             depth={0}
             commentList={comList}
+            upd={updateComList}
           />
         </div>
       </GlobalStyle>
