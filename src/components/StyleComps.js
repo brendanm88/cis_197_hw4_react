@@ -1,10 +1,11 @@
 import s from 'styled-components'
 
+// global style for fonts
 export const GlobalStyle = s.div`
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: white;
 `
-// change margin for reply, upvote, downvote?
+// wraps buttons
 export const ButtonWrapper = s.button`
   font-size: 1em;
   margin: 0.5em;
@@ -13,6 +14,7 @@ export const ButtonWrapper = s.button`
   border-radius: 3px;
   box-shadow: 1px 2px 4px dimgray;
 `
+// title formatting
 export const Title = s.h1`
   background: white;
   border: 10px solid white;
@@ -24,7 +26,7 @@ export const Title = s.h1`
   word-wrap: break-word;
   box-shadow: 1px 3px 5px dimgray;
 `
-
+// input form formatting
 export const InputWrapper = s.input`
   color: steelblue;
   font-size: 1em;
@@ -32,7 +34,7 @@ export const InputWrapper = s.input`
   border-radius: 5px;
   box-shadow: 1px 2px 3px dimgray;
 `
-
+// individual comment formatting (white background really)
 export const ComWrapper = s.div`
   background: white;
   border: 10px solid white;

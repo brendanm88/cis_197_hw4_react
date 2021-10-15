@@ -9,12 +9,17 @@ const NewPost = ({
   first,
   index,
 }) => {
+  // initial states for values in the input fields, if we have hit reply button
   const [inputName, setName] = useState('')
   const [inputBody, setBody] = useState('')
   const [replying, setReplying] = useState(false)
 
+  // possible to post or reply?
   const canSubmit = inputName.length > 0 && inputBody.length > 0
   const canReply = d < 3
+
+  // if first time making post, different appearance
+  // NOTE: new comments at the top b/c most recent
   if (first) {
     return (
       <div>
@@ -40,7 +45,6 @@ const NewPost = ({
             }}
             type="text"
             id="name-box"
-            value={inputName}
             onChange={e => {
               setName(e.target.value)
             }}
@@ -53,7 +57,6 @@ const NewPost = ({
             }}
             type="text"
             id="message-box"
-            value={inputBody}
             onChange={e => {
               setBody(e.target.value)
             }}
@@ -82,6 +85,7 @@ const NewPost = ({
       </div>
     )
   }
+  // now not first NewPost form, but if we hit reply, need to render input boxes
   if (replying) {
     return (
       <div>
@@ -107,7 +111,6 @@ const NewPost = ({
             }}
             type="text"
             id="name-box"
-            value={inputName}
             onChange={e => {
               setName(e.target.value)
             }}
@@ -120,7 +123,6 @@ const NewPost = ({
             }}
             type="text"
             id="message-box"
-            value={inputBody}
             onChange={e => {
               setBody(e.target.value)
             }}
@@ -140,7 +142,6 @@ const NewPost = ({
                 key: uuidv4(),
               }
               update([...list.slice(0, index), comment, ...list.slice(index)])
-              // update([...list, comment])
               setReplying(false)
             }}
           >
@@ -150,6 +151,7 @@ const NewPost = ({
       </div>
     )
   }
+  // if not replying, only render a reply button that must be pressed to show new form
   return (
     <ButtonWrapper
       style={{

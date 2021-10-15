@@ -4,8 +4,9 @@ import NewPost from './NewPost'
 import { GlobalStyle, Title } from './StyleComps'
 
 const App = () => {
+  // global comment list stored here
   const [comList, updateComList] = useState([])
-
+  // render entire app, initially just the NewPost form and a new comment container for the list
   return (
     <div>
       <GlobalStyle>

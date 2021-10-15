@@ -3,6 +3,7 @@ import Comment from './Comment'
 import NewPost from './NewPost'
 
 const CommentContainer = ({ commentList, upd }) => {
+  // iterate over comment list and render new components if not rendered yet
   const comments = commentList.map((com, i) => (
     <div
       key={com.key}
@@ -19,6 +20,8 @@ const CommentContainer = ({ commentList, upd }) => {
       <NewPost d={com.depth + 1} update={upd} list={commentList} first={false} index={i + 1} />
     </div>
   ))
+
+  // return list of <Comment> elements
   return comments
 }
 
