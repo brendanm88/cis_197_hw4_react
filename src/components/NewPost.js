@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import { ButtonWrapper } from './StyleComps'
+import { v4 as uuidv4 } from 'uuid'
+import { ButtonWrapper, InputWrapper } from './StyleComps'
 
 const NewPost = ({
   d,
   update,
   list,
   first,
+  index,
 }) => {
   const [inputName, setName] = useState('')
   const [inputBody, setBody] = useState('')
   const [replying, setReplying] = useState(false)
 
   const canSubmit = inputName.length > 0 && inputBody.length > 0
-  const canReply = d < 4
+  const canReply = d < 3
   if (first) {
     return (
       <div>
@@ -31,7 +33,7 @@ const NewPost = ({
           }}
         >
           Username:
-          <input
+          <InputWrapper
             style={{
               marginRight: '20px',
               marginLeft: '10px',
@@ -44,7 +46,7 @@ const NewPost = ({
             }}
           />
           Message:
-          <input
+          <InputWrapper
             style={{
               marginRight: '20px',
               marginLeft: '10px',
@@ -64,8 +66,14 @@ const NewPost = ({
             type="submit"
             disabled={!canSubmit}
             onClick={() => {
-              const comment = { name: inputName, body: inputBody, depth: d }
-              update([...list, comment])
+              const comment = {
+                name: inputName,
+                body: inputBody,
+                depth: d,
+                key: uuidv4(),
+              }
+              update([comment, ...list])
+              setReplying(false)
             }}
           >
             Post!
@@ -92,7 +100,7 @@ const NewPost = ({
           }}
         >
           Username:
-          <input
+          <InputWrapper
             style={{
               marginRight: '20px',
               marginLeft: '10px',
@@ -105,7 +113,7 @@ const NewPost = ({
             }}
           />
           Message:
-          <input
+          <InputWrapper
             style={{
               marginRight: '20px',
               marginLeft: '10px',
@@ -125,8 +133,15 @@ const NewPost = ({
             type="submit"
             disabled={!canSubmit}
             onClick={() => {
-              const comment = { name: inputName, body: inputBody, depth: d }
-              update([...list, comment])
+              const comment = {
+                name: inputName,
+                body: inputBody,
+                depth: d,
+                key: uuidv4(),
+              }
+              update([...list.slice(0, index), comment, ...list.slice(index)])
+              // update([...list, comment])
+              setReplying(false)
             }}
           >
             Post!
@@ -143,8 +158,7 @@ const NewPost = ({
       }}
       type="button"
       disabled={!canReply}
-      onClick={e => {
-        e.preventDefault()
+      onClick={() => {
         setReplying(true)
       }}
     >

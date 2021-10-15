@@ -12,7 +12,6 @@ const App = () => {
         <div>
           <Title>
             Comment App!
-            FIX ORDERING OF REPLIES!!!
           </Title>
           <NewPost d={0} list={comList} update={updateComList} first />
           <CommentContainer

@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
-import { ButtonWrapper } from './StyleComps'
+import React, { useEffect, useState } from 'react'
+import { ButtonWrapper, ComWrapper } from './StyleComps'
 
 const Comment = ({
   d,
   comment,
 }) => {
   const { name, body } = comment
-  const [replies, setReplies] = useState(0)
   const [replying, setReplying] = useState(false)
   const [depth, setDepth] = useState(d)
   const [votes, setVotes] = useState(0)
 
   if (replying) {
     return (
-      <div>
+      <ComWrapper>
         <h4>
           User:
           {' '}
@@ -26,14 +25,6 @@ const Comment = ({
         <p>
           Votes:
           {votes}
-        </p>
-        <p>
-          Replies:
-          {replies}
-        </p>
-        <p>
-          Depth:
-          {depth}
         </p>
 
         <ButtonWrapper
@@ -56,11 +47,11 @@ const Comment = ({
         >
           DownVote
         </ButtonWrapper>
-      </div>
+      </ComWrapper>
     )
   }
   return (
-    <div>
+    <ComWrapper>
       <h4>
         User:
         {' '}
@@ -74,19 +65,12 @@ const Comment = ({
         Votes:
         {votes}
       </p>
-      <p>
-        Replies:
-        {replies}
-      </p>
-      <p>
-        Depth:
-        {depth}
-      </p>
 
       <ButtonWrapper
         style={{
           background: 'white',
           color: 'steelblue',
+          border: '2px solid steelblue',
         }}
         type="button"
         onClick={() => setVotes(votes + 1)}
@@ -97,13 +81,14 @@ const Comment = ({
         style={{
           background: 'white',
           color: 'steelblue',
+          border: '2px solid steelblue',
         }}
         type="button"
         onClick={() => setVotes(votes - 1)}
       >
         DownVote
       </ButtonWrapper>
-    </div>
+    </ComWrapper>
   )
 }
 
